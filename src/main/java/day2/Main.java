@@ -23,9 +23,6 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        part1(input);
-        part2(input);
     }
 
     static void part1(List<String> input) {
@@ -59,16 +56,12 @@ public class Main {
             int me = shapesPoints.get(shapes.get(s.charAt(2)));
 
             int result = opp - me;
+            int modulo = opp % me;
+            System.out.println(modulo);
             switch (result) {
-                case -2, 1:
-                    sumOfPoints += me + resultPoints.get("lose");
-                    break;
-                case -1, 2:
-                    sumOfPoints += me + resultPoints.get("win");
-                    break;
-                case 0:
-                    sumOfPoints += me + resultPoints.get("draw");
-                    break;
+                case -2, 1 -> sumOfPoints += me + resultPoints.get("lose");
+                case -1, 2 -> sumOfPoints += me + resultPoints.get("win");
+                case 0 -> sumOfPoints += me + resultPoints.get("draw");
             }
         }
 
@@ -102,15 +95,9 @@ public class Main {
             char result = s.charAt(2);
 
             switch (result) {
-                case 'X':
-                    sumOfPoints += shapesPoints.get(loses.get(opp));
-                    break;
-                case 'Y':
-                    sumOfPoints += shapesPoints.get(opp) + 3;
-                    break;
-                case 'Z':
-                    sumOfPoints += shapesPoints.get(wins.get(opp)) + 6;
-                    break;
+                case 'X' -> sumOfPoints += shapesPoints.get(loses.get(opp));
+                case 'Y' -> sumOfPoints += shapesPoints.get(opp) + 3;
+                case 'Z' -> sumOfPoints += shapesPoints.get(wins.get(opp)) + 6;
             }
         }
         System.out.println(sumOfPoints);
