@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.*;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -29,7 +27,7 @@ public class Main {
         Set<Point> visitedPoints = new HashSet<>();
         Knot head = new Knot(new Coordinate(0, 0));
         Knot tail = new Knot(new Coordinate(0, 0));
-        visitedPoints.add(new Point(tail.getPosition().getX(), tail.getPosition().getY()));
+        visitedPoints.add(tail.getPoint());
 
         for (String[] move : moves) {
             doMove(move, head, tail, visitedPoints);
@@ -44,7 +42,7 @@ public class Main {
         for (int i = 0; i < knots.length; i++) {
             knots[i] = new Knot(new Coordinate(11, -15));
         }
-        visitedPoints.add(new Point(knots[knots.length - 1].getPosition().getX(), knots[knots.length - 1].getPosition().getY()));
+        visitedPoints.add(knots[knots.length -1].getPoint());
 
         for (String[] move : moves) {
             for (int j = 0; j < Integer.parseInt(move[1]); j++) {
@@ -60,7 +58,7 @@ public class Main {
                         }
                     }
                 }
-                visitedPoints.add(new Point(knots[knots.length - 1].getPosition().getX(), knots[knots.length - 1].getPosition().getY()));
+                visitedPoints.add(knots[knots.length -1].getPoint());
             }
             //printRope(knots);
         }
@@ -108,7 +106,7 @@ public class Main {
                     }
                     break;
             }
-            visitedPoints.add(new Point(tail.getPosition().getX(), tail.getPosition().getY()));
+            visitedPoints.add(tail.getPoint());
         }
     }
 

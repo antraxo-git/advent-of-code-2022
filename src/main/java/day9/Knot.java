@@ -3,6 +3,8 @@ package day9;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.*;
+
 @Getter
 @Setter
 public class Knot {
@@ -30,6 +32,10 @@ public class Knot {
 
     public boolean isAdjacent(Knot anotherKnot) {
         return position.isAdjacent(anotherKnot.getPosition());
+    }
+
+    public Point getPoint() {
+        return new Point(position.getX(), position.getY());
     }
 
     public void getToHead(Knot head) {
